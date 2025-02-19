@@ -1,0 +1,152 @@
+:root {
+  --marked-done: rgb(107, 168, 15);
+  --mark-done-hover: hotpink;
+}
+body {
+  margin: 5rem;
+  font-family: monospace;
+  /*Pointer move styling*/
+  background-color: hsl(700, var(--saturation, 50%), var(--lightness, 50%));
+  transition: background-color 0.1s ease;
+}
+header {
+  padding: 1rem;
+}
+footer {
+  padding-top: 5rem;
+}
+section {
+  background-color: rgb(255, 246, 234);
+  border: 3px solid hotpink;
+  margin-top: 3rem;
+  padding-bottom: 3rem;
+  padding-left: 3rem;
+  padding-right: 3rem;
+  border-radius: 10px;
+}
+input {
+  font-family: monospace;
+  cursor: pointer;
+}
+
+.add_new_task {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  margin-left: 3rem;
+}
+input[type="number"] {
+  height: 1.5rem;
+  width: 3.5rem;
+}
+input[type="text"] {
+  border: none;
+  height: 1.5rem;
+  padding-left: 1rem;
+  border-bottom: 1px solid black;
+  background-color: rgb(255, 246, 234);
+}
+.completed {
+  border-color: rgb(107, 168, 15);
+}
+h1 {
+  text-align: center;
+}
+h2 {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  text-decoration: underline;
+}
+li {
+  list-style: none;
+}
+div {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr 1fr;
+  align-items: center;
+}
+
+.colorDone h3 {
+  text-decoration: 1px line-through;
+}
+
+.colorTodo {
+  color: black;
+}
+button {
+  width: 120px;
+  height: 30px;
+  font-family: monospace;
+  background-color: rgb(255, 228, 213);
+  border-color: hotpink;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.new_task_button {
+  margin-left: 2.5rem;
+  background-color: rgb(222, 255, 173);
+}
+
+/*Styling input checkbox*/
+.mark_toggle_done {
+  appearance: none; /*Fjerner standard styling*/
+  width: 20px;
+  height: 20px;
+  border: 1.5px solid var(--mark-done-hover);
+  background-color: rgb(255, 246, 234);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative; /* Gør det muligt at positionere ::after relativt */
+}
+
+.mark_toggle_done::after {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 25px;
+  z-index: 1;
+  border: solid black;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+  left: 55%;
+  top: 40%;
+  transform: translate(-50%, -65%) rotate(45deg); /* Justerer placering */
+}
+.mark_toggle_done:hover {
+  background-color: var(--mark-done-hover);
+}
+.mark_toggle_done:checked {
+  border-color: var(--marked-done);
+}
+.mark_toggle_done:checked:after {
+  opacity: 1; /* Vis checkmark */
+}
+/*Styling input text*/
+.new_task_input {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid gray;
+  /* border-radius: 5px; */
+  outline: none; /* Fjerner standard blå outline */
+  transition: border-color 0.3s ease-in-out;
+}
+.new_task_input:focus {
+  border-color: hotpink; /* Ændrer border-farve, når input er aktivt */
+  box-shadow: 0 0 5px rgba(255, 105, 180, 0.5); /* Tilføjer en let glow-effekt */
+}
+
+.input_number {
+  width: 40px;
+  text-align: center;
+}
+
+/*Animationer på buttons*/
+button {
+  transition: transform 0.5s ease;
+}
+button:hover {
+  transform: scale(1.1);
+}
