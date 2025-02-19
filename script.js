@@ -62,7 +62,7 @@ function filterAndSort() {
 }
 
 function showToDo(listToShow, listContainer) {
-  listContainer.innerHTML = ""; //Sørger for at den ikke henter hele array igen når man klikker på "mark as done" button
+  listContainer.innerHTML = ""; //Sørger for at den ikke henter hele array igen når man klikker på "mark as done"
 
   listToShow.forEach((task) => {
     const li = document.createElement("li");
