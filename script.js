@@ -6,7 +6,6 @@
 // ID
 
 // Der skal vedligeholdes en liste over de tasks der er done.
-
 //(note: randomUUID(); Skal lave en unik ID til hver task)
 
 // Din ToDo-app skal være i stand til at:
@@ -22,13 +21,12 @@
 const toDoListQsl = document.querySelector(".to_do_list");
 const completedListQsl = document.querySelector(".completed_list");
 const newTaskInput = document.querySelector(".new_task_input"); // Input felt
-const newTaskButton = document.querySelector(".new_task_button"); // Tilføj opgave-knap
+const newTaskButton = document.querySelector(".new_task_button"); // Tilføj task-knap
 
-// Hent eksisterende opgaver fra localStorage eller opret et tomt array
+// Hent eksisterende tasks fra localStorage eller opret et tomt array
 let toDoArr = JSON.parse(localStorage.getItem("toDoList")) || [];
 
-// const toDoArr = []; Udkommenterer når jeg lægger til loacalStorage
-
+//const toDoArr = []; Udkommenterer når jeg lægger til loacalStorage
 //   {
 //     id: self.crypto.randomUUID(),
 //     text: "Gåtur med lille Mona",
@@ -72,7 +70,7 @@ function showToDo(listToShow, listContainer) {
       task.done ? "checked" : ""
     }><h3>${task.text}</h3><input type="number" value="${
       task.quantity
-    }" class="input_number"><button class="delete_button">Delete task</button></div>`; //ændre til input checkbox? <button class="mark_toggle_done">Mark as done</button>
+    }" class="input_number"><button class="delete_button">Delete task</button></div>`;
 
     li.classList.add(task.done ? "colorDone" : "colorTodo"); //ninja kode
     //Ovenstående er det samme som det nedenstående:
@@ -97,11 +95,9 @@ function showToDo(listToShow, listContainer) {
         //   task.done = true;
         // }
         //console.log("toDoArr", toDoArr); //Viser array i consolen
-        //showToDo();
 
         saveToLocalStorage(); // Gem ændringen i localStorage
-
-        filterAndSort(); //Flytter opgaven mellem listerne
+        filterAndSort(); //Flytter task mellem listerne
       }
     });
 
@@ -120,18 +116,17 @@ function showToDo(listToShow, listContainer) {
   });
 }
 
-// Funktion til at slette en opgave fra arrayet
+// Funktion til at slette en task fra arrayet
 function deleteTask(taskId) {
   const index = toDoArr.findIndex((task) => task.id === taskId);
   if (index !== -1) {
-    toDoArr.splice(index, 1); // Fjern opgaven fra arrayet
+    toDoArr.splice(index, 1); // Fjern task fra arrayet
     saveToLocalStorage(); // Gem ændringen i localStorage
-
     filterAndSort(); // Opdater listerne
   }
 }
 
-// Funktion til at tilføje en ny opgave
+// Funktion til at tilføje en ny task
 function addNewTask() {
   const taskText = newTaskInput.value.trim(); // Henter inputværdien og fjerner mellemrum
 
